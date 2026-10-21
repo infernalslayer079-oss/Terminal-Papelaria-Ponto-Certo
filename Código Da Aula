@@ -1,0 +1,99 @@
+============================================================
+# SISTEMA PAPELARIA PONTO CERTO
+# Funcionalidades: cadastrar produtos (com validação de preço)
+#                  e consultar produtos pelo nome.
+# ============================================================
+
+# Lista global que armazena os produtos cadastrados.
+# Cada produto é uma tupla: (nome, preco)
+produtos = []
+
+
+# ------------------------------------------------------------
+# FUNÇÃO: mostrar_menu
+# Exibe o menu principal e a quantidade de produtos cadastrados.
+# ------------------------------------------------------------
+def mostrar_menu(qtd_produtos):
+    print("\n===== PAPELARIA PONTO CERTO =====")
+    print(f"Produtos cadastrados: {qtd_produtos}")
+    print("1 - Cadastrar produto")
+    print("2 - Consultar produto")
+    print("0 - Sair")
+    print("=================================")
+
+
+# ------------------------------------------------------------
+# FUNÇÃO: cadastrar_produto
+# Solicita nome e preço. O preço só é aceito se for > 0.
+# A validação usa um while porque o usuário pode errar várias
+# vezes até informar um valor válido.
+# ------------------------------------------------------------
+def cadastrar_produto(produtos):
+    nome = input("Nome do produto: ")
+
+    preco_validate = False  # flag de controle da validação
+
+    # Enquanto o preço NÃO for válido, continua pedindo.
+    while not preco_validate:
+        preco = float(input("Preço do produto (maior que zero): "))
+
+        if preco > 0:
+            preco_validate = True  # preço válido -> sai do laço
+        else:
+            print("Preço inválido. Digite um valor maior que zero.")
+
+    # Só chega aqui se o preço for válido
+    produtos.append((nome, preco))
+    print("Produto cadastrado com sucesso!")
+
+
+# ------------------------------------------------------------
+# FUNÇÃO: consultar_produto
+# Percorre a lista procurando um produto pelo nome.
+# O while tem DUAS condições:
+#   1) i < len(produtos)  -> ainda há itens para verificar
+#   2) not encontrado     -> ainda não achamos o produto
+# Assim, o laço para quando encontrar OU quando acabar a lista.
+# ------------------------------------------------------------
+def consultar_produto(produtos):
+    nome_busca = input("Digite o nome do produto: ")
+
+    encontrado = False
+    i = 0
+
+    # Continua enquanto houver itens E o produto não foi achado
+    while i < len(produtos) and not encontrado:
+        if produtos[i][0] == nome_busca:
+            print(
+                f"Produto encontrado: "
+                f"{produtos[i][0]} - R$ {produtos[i][1]:.2f}"
+            )
+            encontrado = True
+        i += 1
+
+    # Se saiu do laço sem encontrar, avisa o usuário
+    if not encontrado:
+        print("Produto não encontrado.")
+
+
+# ------------------------------------------------------------
+# PROGRAMA PRINCIPAL
+# Menu com loop principal. Cada opção chama uma função.
+# A estrutura do menu NÃO muda ao adicionar a consulta:
+# basta incluir um novo "elif" para a opção 2.
+# ------------------------------------------------------------
+continuar = True
+
+while continuar:
+    mostrar_menu(len(produtos))
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        cadastrar_produto(produtos)
+    elif opcao == "2":
+        consultar_produto(produtos)   # <- integração da nova função
+    elif opcao == "0":
+        continuar = False
+        print("Encerrando o sistema. Até logo!")
+    else:
+        print("Opção inválida.")
