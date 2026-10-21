@@ -1,0 +1,25 @@
+Lógica e Linguagem de Programação- LLP
+22/10/2026 
+Grupo: 6 pessoas
+Seminário e atividade de implementação do código:
+Com base na aula Programando Terminal, vocês vão desenvolver um código para um Terminal bancário (MenuBanco.py).O Terminal deve apresentar 2 menus:
+Menu Principal  e Menu de pagamentos, usando função 
+Desafio: Exibição de Saldo inicial e atualizado após transações de pagamento
+
+Cada grupo deverá apresentar:
+Explicação teórica sobre menus no terminal, funções e validação de entradas;
+
+Demonstração ao vivo do terminal bancário em execução, percorrendo todas as opções implementadas;
+
+Explicação do código, destacando a função de cada parte e as decisões tomadas pelo grupo;
+
+Relato das dificuldades encontradas e das soluções aplicadas;
+
+Propostas de melhorias futuras para o sistema.
+
+Entregáveis
+Código-fonte em Python (arquivo .py);
+Documento breve (1 a 2 páginas) descrevendo a estrutura do sistema, as funções criadas e as ampliações implementadas;
+Apresentação oral no dia do seminário, com demonstração prática do terminal em funcionamento.
+
+"À medida que sua carreira avança, cada trabalho que você faz deve gerar mais e mais resultados. Não se permita estagnar, nunca fique parado."(Sam Altman)
